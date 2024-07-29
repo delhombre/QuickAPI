@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="../build/QuickAPI.API.props" />
+</Project>
