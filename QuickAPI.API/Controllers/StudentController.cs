@@ -20,5 +20,16 @@ namespace QuickAPI.API.Controllers
             IEnumerable<Student> students = connection.Query<Student>("SELECT * FROM Student");
             return Ok(students);
         }
+
+        [HttpGet("{id}")]
+        public IActionResult GetById(int id)
+        {
+            using SqlConnection connection = new(_connectionString);
+            Student? student = connection.QueryFirstOrDefault<Student>(
+                "SELECT * FROM Student WHERE Id = @Id",
+                new { Id = id }
+            );
+            return Ok(student);
+        }
     }
 }
